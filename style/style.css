@@ -1,0 +1,27 @@
+html, body {
+	background: #DEDDB4;
+	margin: 0;
+}
+
+h1 {
+    font: 1.6em Verdana, Geneva, sans-serif;
+    font-size: xx-large;
+	margin: 40px;
+	color: rgb(83, 104, 138);
+}
+
+.container {
+    border: 1px solid indigo;
+    background: #38C1CB80;
+    box-sizing: border-box;
+    border-radius: 10%;
+    position: relative;
+    margin: 20vh 90vh;
+    width: 400px;
+    height: 500px;
+}
+
+p {
+    margin: 40px;
+    font-size: larger;
+}
