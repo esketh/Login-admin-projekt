@@ -29,3 +29,9 @@ p {
 .removeQuestion{
    display: none;
 }
+
+/* Hibakiírás loginnál */
+.divhibak {
+    border: solid 1px #0f0;
+    display: none;
+}
