@@ -20,25 +20,24 @@ var BiggestJuzerEver = {
   showAllDataWithTempleString() {
     var  userTemplate = '';
     this.data.forEach(element => {
-      userTemplate += `<tr>
+      userTemplate += `<tr id="${element.id}">
               <td contenteditable="true" spellcheck="false">${element.id}</td>
               <td contenteditable="true" spellcheck="false">${element.name}</td>
               <td contenteditable="true" spellcheck="false">${element.emailAddress}</td>
               <td contenteditable="true" spellcheck="false">${element.address}</td>
               <td><button class="btnEdit" onclick="editHandler(this);" >${'Szerkesztés'}</button>
              <button class="btnSave" onclick="">${'Mentés'}</button></td>
-              <td><button class="btnDelete" onclick=" kerdezTorol(this);" >${'Törlés'}</button></td>
+              <td><button class="btnDelete" onclick="removeHandler()" name="${element.id}">Törlés</button></td>
     
                </tr>`;
       document.querySelector('.Users_data').innerHTML = userTemplate;
     });
   },
-  remove(rowTarget) {
-    console.log('teszt: ', rowTarget.parentNode);
+  remove(id) {
     // event.target the button lesz
-    var td = event.target.parentNode;
-    var tr = td.parentNode;
-    tr.parentNode.removeChild(tr);
+    var nodeTrUser = document.querySelector(`[id="${id}"]`);
+    var nodeTbody = document.querySelector('tbody');
+    nodeTbody.removeChild(nodeTrUser);
   },
   mentesbtn() {
     /* var nodebtnSave = document.querySelectorAll('.btnSave');
@@ -57,26 +56,36 @@ var BiggestJuzerEver = {
 
 };
 
-// az adatok megjelenítéséhez
+// Az adatok megjelenítéséhez
 
 BiggestJuzerEver.int();
 BiggestJuzerEver.mentesbtn();
 
-//  Esemény kezelések
+//  Esemény kezelések--Törlés
 
+var userID;
 
-function kerdezTorol() {
-  console.log('?', event.target.parentNode.parentNode);
+function removeHandler() {
+  userID = parseInt(event.target.name, 10);
   var noderemoveQuestion = document.querySelector('.removeQuestion');
   noderemoveQuestion.style.display = 'block';
-  var target = event.target.parentNode.parentNode;
-  return target;
 }
-var rowTarget = kerdezTorol();
 
-function removeHandler(rowTarget) {
-  BiggestJuzerEver.remove(rowTarget);
+var nodeYes = document.querySelector('#yes');
+nodeYes.addEventListener('click', checkIfYes);
+
+var nodeNo = document.querySelector('#no');
+nodeNo.addEventListener('click', checkIfNo);
+
+
+function checkIfYes() {
+  BiggestJuzerEver.remove(userID);
+  var noderemoveQuestion = document.querySelector('.removeQuestion');
+  noderemoveQuestion.style.display = 'none';
 }
-function editHandler() {
-  BiggestJuzerEver.edit();
+
+function checkIfNo() {
+  var noderemoveQuestion = document.querySelector('.removeQuestion');
+  noderemoveQuestion.style.display = 'none';
 }
+
