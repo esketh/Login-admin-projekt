@@ -25,3 +25,7 @@ p {
     margin: 40px;
     font-size: larger;
 }
+/*Táblázathoz*/
+.removeQuestion{
+    display: none;
+}

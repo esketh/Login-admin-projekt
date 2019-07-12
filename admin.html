@@ -8,8 +8,38 @@
     <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-    
-    <script src="/script/users.json"></script>
-    <script src="/script/script.js"></script>
+    <main>
+        <div class="removeQuestion">
+            <p>Biztos kiakarod törölni?</p>
+            <button onclick="removeHandler()">Igen</button>
+            <button onclick="hideQuestion()">Nem</button>
+        </div>
+        <div class="users">
+            <table border="1px solid black">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email 
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody class="Users_data">
+                    
+                </tbody>
+            </table>
+        </div>
+    </main>
+   
+    <script src="/scripts/scripts.js"></script>
 </body>
 </html>
