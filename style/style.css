@@ -1,5 +1,6 @@
 html, body {
-	background: #DEDDB4;
+    /* background: #DEDDB4; */
+    background-image: image("/style/nasa1.jpg")
 	margin: 0;
 }
 
