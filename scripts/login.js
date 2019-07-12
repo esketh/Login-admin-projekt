@@ -24,11 +24,11 @@ function window_LoadHandler() {
 }
 
 function logIn_ClickHandler() {
-    var nodeUserNameInput = document.querySelector('#inputUserName');
-    var nodePasswordInput = document.querySelector('#inputPassword');
+    var nodeUserNameInput = document.querySelector('#inputUserName').value;
+    var nodePasswordInput = document.querySelector('#inputPassword').value;
     for (var i = 0; i < loginUsers.length; i++) {
-        if (loginUsers[i].username == nodeUserNameInput.value && loginUsers[i].password == nodePasswordInput.value) {
-            window.open('http://127.0.0.1:5500/Feladatka/table.html', '_self');
+        if (loginUsers[i].username == nodeUserNameInput && loginUsers[i].password == nodePasswordInput) {
+            window.open('admin.html', '_self');
             return;
         }
     }
