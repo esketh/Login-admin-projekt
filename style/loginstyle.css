@@ -1,4 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
+html,body {
+	position: relative;
+	min-height: 100vh;
+	background-color: #E1E8EE;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+}
+
+#divLogin {
+    background-color: #222;
+    background-image: url(/images/nasa5_kicsi.jpg);
+    opacity: .9;
+    color: #F7F7F7;
+	border-radius: 15px;
+	height: 500px;
+	width: 400px;
+	position: relative;
+    overflow: hidden;
+}
+
+h1{
+    position: absolute;
+    color: #F7F7F7;
+	top: 20%;
+	left: 30%;
+	width: 65%;
+	z-index: 5;
+}
+
+.form--holder {
+    border-radius: 15px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    overflow: hidden;
+    margin-top: 300px;
+    opacity: 1;
+}
+
+.loginwbtn {
+    position: absolute;
+    left: 1.3vw;
+    width: 90%;
+ }
+
+.input--textarea {
+    border: 0;
+	outline: none;
+	box-shadow: none;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding: 8px 15px;
+	border-bottom: 1px solid #eee;
+	width: 100%;
+    font-size: 12px;
+}
+
+.input--textarea:last-child {
+	border-bottom: 0;
+}
+
+
+#inputLogIn {
+    background-color: #4496AB;
+    color: #FDF8F3;
+    border:0;
+    border-radius: 15px;
+    display: block;
+    margin: 15px auto; 
+    padding: 15px 45px;
+    width: 50%;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .7;
+    z-index: 1;
+}
+    
+#inputLogIns:hover {
+        transition: all .3s ease;
+        background-color: rgba(0,0,0,0.8);
+    
+}
+
 .divhibak {
-    border: solid 1px #0f0;
+    background: #666666BF;
+    color: #F7F7F7;
     display: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1; 
 }
