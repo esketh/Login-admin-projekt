@@ -28,7 +28,7 @@ function logIn_ClickHandler() {
     var nodePasswordInput = document.querySelector('#inputPassword');
     for (var i = 0; i < loginUsers.length; i++) {
         if (loginUsers[i].username == nodeUserNameInput.value && loginUsers[i].password == nodePasswordInput.value) {
-            window.open('http://127.0.0.1:5500/Feladatka/table.html', '_self');
+            window.open('admin.html', '_self');
             return;
         }
     }
