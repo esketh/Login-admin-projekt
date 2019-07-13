@@ -1,6 +1,6 @@
 var BiggestJuzerEver = {
   data: [],
-  int() {
+  init() {
     this.getData();
   },
   callback(jsonContent) {
@@ -9,7 +9,7 @@ var BiggestJuzerEver = {
   },
   getData() {
     var request = new XMLHttpRequest();
-    request.onreadystatechange = () =>{
+    request.onreadystatechange = () => {
       if (request.readyState === 4 && request.status === 200) {
         this.callback(request.responseText);
       }
@@ -17,8 +17,13 @@ var BiggestJuzerEver = {
     request.open('GET', '/Data/users.json');
     request.send();
   },
+  addData(item) {
+    // hozzáadja az új júzert a táblázat végére
+    this.data.push(item);
+  },
+
   showAllDataWithTempleString() {
-    var  userTemplate = '';
+    var userTemplate = '';
     this.data.forEach(element => {
       userTemplate += `<tr id="${element.id}">
               <td>${element.id}</td>
@@ -43,7 +48,7 @@ var BiggestJuzerEver = {
     var nodesaveHandler = document.querySelector('.saveQestion');
     nodesaveHandler.style.display = 'block';
     var nodeMentesQuestion = `<div>
-    <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
+    <p>Biztosan menteni akarod ${userSaveId - 1} sort ?</p>
     <button id="yesSave"  >Igen</button>
     <button id="noSave">Nem</button>
     </div>`;
@@ -59,13 +64,61 @@ var BiggestJuzerEver = {
   },
   store() {
 
+  },
+  // a validátorokat a saveNewUser onclick indítja
+  validateUserName(userName) {
+    if (userName === '') {
+      return 'Username is required!';
+    }
+    if (!/^[a-zA-Z\ ]+$/.test(userName)) {
+      // hibaüzenetet ad, ha a júzernév nem az angol abc betűit tartalmazza, vagy ha már létezik
+      // a test futtatja rá a stringet a username-re, true-t vagy false-t ad vissza
+      return 'Please, write letters only!';
+    }
+
+    for (var i = 0; i < this.data.length; i += 1) {
+      if (userName === this.data[i].name) {
+        return 'User already exists.';
+      }
+    }
+
+    return '';
+  },
+  // e-mail validátor, hibát üres mező és nem megfelelő mailformátum esetén jelez
+  validateUserEmail(userEmail) {
+    if (userEmail === '') {
+      return 'E-mail is required!';
+    }
+    if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(userEmail)) {
+      return 'Invalid e-mail address!';
+    }
+    return '';
+  },
+
+  validateUserAddress(userAddress) {
+    if (userAddress === '') {
+      return 'Address is required!';
+    }
+    return '';
+  },
+  getNextId() {
+    // az utolsó ID után következő ID-t adja vissza az új júzernek
+    var maxID = this.data[0].id;
+    for (var i = 0; i < this.data.length; i += 1) {
+      if (this.data[i].id > maxID) {
+        maxID = this.data[i].id;
+      }
+    }
+    return maxID + 1;
   }
+
 
 };
 
 // Az adatok megjelenítéséhez
 
-BiggestJuzerEver.int();
+BiggestJuzerEver.init();
+BiggestJuzerEver.mentesbtn();
 
 //  Esemény kezelések--Törlés
 
@@ -94,6 +147,47 @@ function checkIfNo() {
   noderemoveQuestion.style.display = 'none';
 }
 
+// inputmezők megjelenítése a táblázat felett új júzer hozzáadására kattintva
+function openAddForm() {
+  // inputmezők törlése - a 'user already exist' hibaüzenetet ez tünteti el
+  clearMessage();
+  document.getElementById('divForNewUser').style.display = 'block';
+}
+
+function saveNewUser() {
+  var userName = document.getElementById('addNewUserName').value;
+  var userEmail = document.getElementById('addNewUserEmail').value;
+  var userAddress = document.getElementById('addNewUserAddress').value;
+
+  // a validátorok hibaüzenetei ide futnak be:
+  var errorMessage = BiggestJuzerEver.validateUserName(userName) || BiggestJuzerEver.validateUserEmail(userEmail) || BiggestJuzerEver.validateUserAddress(userAddress);
+  // ha nincs hibaüzenet, a júzeradatok bekerülnek egy objektumba és elmentődnek
+  if (errorMessage === '') {
+    var newUserToSaveObj = {};
+    newUserToSaveObj.id = BiggestJuzerEver.getNextId();
+    newUserToSaveObj.name = userName;
+    newUserToSaveObj.emailAddress = userEmail;
+    newUserToSaveObj.address = userAddress;
+    // inputmezők törlése sikeres mentéskor
+    clearMessage();
+    // az objektumot pusholja a nagy tömbbe
+    BiggestJuzerEver.addData(newUserToSaveObj);
+    showMessage('User succesfully added.');
+    BiggestJuzerEver.showAllDataWithTempleString();
+  } else {
+    showMessage(errorMessage);
+  }
+}
+
+function showMessage(message) {
+  document.getElementById('fieldForMessages').innerHTML = message;
+}
+
+function clearMessage() {
+  document.getElementById('addNewUserName').value = '';
+  document.getElementById('addNewUserEmail').value = '';
+  document.getElementById('addNewUserAddress').value = '';
+}
 // szerkesztés-másolás
 var userSaveId;
 
@@ -111,8 +205,8 @@ function editHandler() {
 
   // input mezők disabled tul. levétele
   var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
-  nodeEdittableTdName .removeAttribute('disabled');
-  nodeEdittableTdName .setAttribute('spellcheck', false);
+  nodeEdittableTdName.removeAttribute('disabled');
+  nodeEdittableTdName.setAttribute('spellcheck', false);
 
   var nodeEdittableTdEmail = nodeTr.querySelector('.editableEmail>input');
   nodeEdittableTdEmail.removeAttribute('disabled');
