@@ -1,13 +1,14 @@
-html, body {
-	background: #DEDDB4;
-	margin: 0;
+html,
+body {
+    background: #DEDDB4;
+    margin: 0;
 }
 
 h1 {
     font: 1.6em Verdana, Geneva, sans-serif;
     font-size: xx-large;
-	margin: 40px;
-	color: rgb(83, 104, 138);
+    margin: 40px;
+    color: rgb(83, 104, 138);
 }
 
 .container {
@@ -24,4 +25,14 @@ h1 {
 p {
     margin: 40px;
     font-size: larger;
+}
+
+/*Táblázathoz*/
+.removeQuestion {
+    display: none;
+}
+
+/*új júzer felvitelekor vált block-ra*/
+#divForNewUser {
+    display: none;
 }
