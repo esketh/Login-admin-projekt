@@ -29,3 +29,7 @@ p {
 .removeQuestion{
    display: none;
 }
+/*új júzer felvitelekor vált block-ra*/
+#divForNewUser {
+    display: none;
+}
