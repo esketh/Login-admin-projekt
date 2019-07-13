@@ -149,6 +149,7 @@ function checkIfNo() {
 
 // inputmezők megjelenítése a táblázat felett új júzer hozzáadására kattintva
 function openAddForm() {
+  // inputmezők törlése - a 'user already exist' hibaüzenetet ez tünteti el
   clearMessage();
   document.getElementById('divForNewUser').style.display = 'block';
 }
