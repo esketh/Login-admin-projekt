@@ -47,7 +47,7 @@ var BiggestJuzerEver = {
     var nodesaveHandler = document.querySelector('.saveQestion');
     nodesaveHandler.style.display = 'block';
     var nodeMentesQuestion = `<div>
-    <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
+    <p>Biztosan menteni akarod ${userSaveId - 1} sort ?</p>
     <button id="yesSave"  >Igen</button>
     <button id="noSave">Nem</button>
     </div>`;
@@ -203,8 +203,8 @@ function editHandler() {
 
   // input mezők disabled tul. levétele
   var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
-  nodeEdittableTdName .removeAttribute('disabled');
-  nodeEdittableTdName .setAttribute('spellcheck', false);
+  nodeEdittableTdName.removeAttribute('disabled');
+  nodeEdittableTdName.setAttribute('spellcheck', false);
 
   var nodeEdittableTdEmail = nodeTr.querySelector('.editableEmail>input');
   nodeEdittableTdEmail.removeAttribute('disabled');
