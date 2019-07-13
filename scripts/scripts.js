@@ -21,16 +21,17 @@ var BiggestJuzerEver = {
     // hozzáadja az új júzert a táblázat végére
     this.data.push(item);
   },
+  
   showAllDataWithTempleString() {
     var userTemplate = '';
     this.data.forEach(element => {
       userTemplate += `<tr id="${element.id}">
-              <td contenteditable="true" spellcheck="false">${element.id}</td>
-              <td contenteditable="true" spellcheck="false">${element.name}</td>
-              <td contenteditable="true" spellcheck="false">${element.emailAddress}</td>
-              <td contenteditable="true" spellcheck="false">${element.address}</td>
-              <td><button class="btnEdit" onclick="editHandler(this);" >${'Szerkesztés'}</button>
-             <button class="btnSave" onclick="">${'Mentés'}</button></td>
+              <td>${element.id}</td>
+              <td class="editableName"><input value="${element.name}" disabled></td>
+              <td class="editableEmail"><input value="${element.emailAddress}" disabled></td>
+              <td class="editableAddress"><input value="${element.address}"  disabled></td>
+              <td><button class="btnEdit" onclick="editHandler();" name="${element.id + 1}" >${'Szerkesztés'}</button>
+              <button class="btnSave"">Mentés</button>
               <td><button class="btnDelete" onclick="removeHandler()" name="${element.id}">Törlés</button></td>
     
                </tr>`;
@@ -44,11 +45,18 @@ var BiggestJuzerEver = {
     nodeTbody.removeChild(nodeTrUser);
   },
   mentesbtn() {
-    /* var nodebtnSave = document.querySelectorAll('.btnSave');
-    nodebtnSave.style.display = 'none';*/
+    var nodesaveHandler = document.querySelector('.saveQestion');
+    nodesaveHandler.style.display = 'block';
+    var nodeMentesQuestion = `<div>
+    <p>Biztosan menteni akarod ${userSaveId - 1} sort ?</p>
+    <button id="yesSave"  >Igen</button>
+    <button id="noSave">Nem</button>
+    </div>`;
+    document.querySelector('.saveQestion').innerHTML = nodeMentesQuestion;
+    this.edit();
   },
   edit() {
-    event.target.parentNodes.parentNodes.setAttribute('contenteditable', 'true');
+    console.log('edit');
   },
 
   create() {
@@ -93,7 +101,6 @@ var BiggestJuzerEver = {
     }
     return '';
   },
-
   getNextId() {
     // az utolsó ID után következő ID-t adja vissza az új júzernek
     var maxID = this.data[0].id;
@@ -121,14 +128,13 @@ function removeHandler() {
   userID = parseInt(event.target.name, 10);
   var noderemoveQuestion = document.querySelector('.removeQuestion');
   noderemoveQuestion.style.display = 'block';
+  var questionRemove = `<div>
+    <p>Biztos ki akarod törölni ${userID} sort?</p>
+    <button id="yes" onclick="checkIfYes()" >Igen</button>
+    <button id="no" onclick="checkIfNo()">Nem</button>
+    </div>`;
+  document.querySelector('.removeQuestion').innerHTML = questionRemove;
 }
-
-var nodeYes = document.querySelector('#yes');
-nodeYes.addEventListener('click', checkIfYes);
-
-var nodeNo = document.querySelector('#no');
-nodeNo.addEventListener('click', checkIfNo);
-
 
 function checkIfYes() {
   BiggestJuzerEver.remove(userID);
@@ -146,7 +152,6 @@ function openAddForm() {
   document.getElementById('divForNewUser').style.display = 'block';
 }
 
-// ez menti az új júzert
 function saveNewUser() {
   var userName = document.getElementById('addNewUserName').value;
   var userEmail = document.getElementById('addNewUserEmail').value;
@@ -181,5 +186,41 @@ function clearMessage() {
   document.getElementById('addNewUserEmail').value = '';
   document.getElementById('addNewUserAddress').value = '';
 }
+// szerkesztés-másolás
+var userSaveId;
 
+function editHandler() {
+  userSaveId = parseInt(event.target.name, 10);
+  // event.target szerkesztés gomb
+  var editBtn = event.target;
+  editBtn.style.display = 'none';
 
+  var nodeTr = event.target.parentNode.parentNode;
+
+  // a mentés gomb megjelenítéséhez
+  var nodebtnSave = nodeTr.querySelector('.btnSave');
+  nodebtnSave.style.display = 'block';
+
+  // input mezők disabled tul. levétele
+  var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
+  nodeEdittableTdName.removeAttribute('disabled');
+  nodeEdittableTdName.setAttribute('spellcheck', false);
+
+  var nodeEdittableTdEmail = nodeTr.querySelector('.editableEmail>input');
+  nodeEdittableTdEmail.removeAttribute('disabled');
+  nodeEdittableTdEmail.setAttribute('spellcheck', false);
+
+  var nodeEdittableTdAddress = nodeTr.querySelector('.editableAddress>input');
+  nodeEdittableTdAddress.removeAttribute('disabled');
+  nodeEdittableTdAddress.setAttribute('spellcheck', false);
+
+  // mentés gomb függvény hívása
+  var nodeSaveBtn = nodeTr.querySelector('.btnSave');
+  nodeSaveBtn.addEventListener('click', saveHandler);
+
+  function saveHandler(userSaveId) {
+    BiggestJuzerEver.mentesbtn();
+  }
+}
+
+// mentés gomb kérdés kezelése
