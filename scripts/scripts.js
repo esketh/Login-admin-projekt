@@ -21,7 +21,7 @@ var BiggestJuzerEver = {
     // hozzáadja az új júzert a táblázat végére
     this.data.push(item);
   },
-  
+
   showAllDataWithTempleString() {
     var userTemplate = '';
     this.data.forEach(element => {
@@ -149,6 +149,7 @@ function checkIfNo() {
 
 // inputmezők megjelenítése a táblázat felett új júzer hozzáadására kattintva
 function openAddForm() {
+  clearMessage();
   document.getElementById('divForNewUser').style.display = 'block';
 }
 
