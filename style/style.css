@@ -131,3 +131,8 @@ tbody:hover tr:hover td {
     top: 0;
     z-index: 1; 
 }
+
+/*új júzer felvitelekor vált block-ra*/
+#divForNewUser {
+    display: none;
+}

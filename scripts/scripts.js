@@ -48,7 +48,7 @@ var BiggestJuzerEver = {
     var nodesaveHandler = document.querySelector('.saveQestion');
     nodesaveHandler.style.display = 'block';
     var nodeMentesQuestion = `<div>
-    <p>Biztosan menteni akarod ${userSaveId - 1} sort ?</p>
+    <p>Biztosan menteni akarod a módosításokat?</p>
     <button id="yesSave"  >Igen</button>
     <button id="noSave">Nem</button>
     </div>`;
