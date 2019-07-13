@@ -146,6 +146,7 @@ function openAddForm() {
   document.getElementById('divForNewUser').style.display = 'block';
 }
 
+// ez menti az új júzert
 function saveNewUser() {
   var userName = document.getElementById('addNewUserName').value;
   var userEmail = document.getElementById('addNewUserEmail').value;
