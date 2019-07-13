@@ -33,3 +33,9 @@ p {
 #divForNewUser {
     display: none;
 }
+.saveQestion{
+    display: none;   
+}
+.btnSave{
+    display: none;
+}
