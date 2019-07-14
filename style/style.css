@@ -28,8 +28,10 @@ p {
 }
 
 /*Táblázathoz*/
-.removeQuestion {
-    display: none;
+.removeQuestion,
+.saveQestion,
+.btnSave{
+   display: none;
 }
 
 /*új júzer felvitelekor vált block-ra*/
@@ -41,11 +43,6 @@ p {
 #hideAddFormBtn {
     display: none;
 }
-
-.saveQestion {
-    display: none;
-}
-
-.btnSave {
+.targetEditBtn{
     display: none;
 }
