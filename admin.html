@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible"
-          content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin</title>
-    <link rel="stylesheet"
-          href="/style/style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
-
 <body>
     <main>
-        <div id="divForNewUser">
-            <h1>Add New User</h1>
-            <label for="addNewUserName">Name</label>
-            <input type="text"
-                   name="addNewUserName"
-                   id="addNewUserName"
-                   required>
-            <label for="addNewUserEmail">E-mail</label>
-            <input type="e-mail"
-                   name="addNewUserEmail"
-                   id="addNewUserEmail"
-                   required>
-            <label for="addNewUserAddress">Address</label>
-            <input type="text"
-                   name="addNewUserAddress"
-                   id="addNewUserAddress"
-                   required>
-            <button id="saveNewUserBtn"
-                    type="button"
-                    onclick="saveNewUser()">Save</button>
-        </div>
-        <div id="divForMessages"
-             class="alert">
-            <span id="fieldForMessages"></span>
-        </div>
-        <!-- gomb a form elrejtéséhez -->
-        <button id="hideAddFormBtn"
-                onclick="hideAddForm()">Hide Form</button>
-        <!-- gomb új júzer létrehozásához, block-ra állítja az inputmezőket -->
-        <button onclick="openAddForm()">New user</button>
-
-        <div class="removeQuestion">
-            <p>Biztos kiakarod törölni?</p>
-            <button id="yes">Igen</button>
-            <button id="no">Nem</button>
-        </div>
+            <div id="divForNewUser">
+                    <h1>Add New User</h1>
+                    <label for="addNewUserName">Name</label>
+                    <input type="text"
+                           name="addNewUserName"
+                           id="addNewUserName"
+                           required>
+                    <label for="addNewUserEmail">E-mail</label>
+                    <input type="e-mail"
+                           name="addNewUserEmail"
+                           id="addNewUserEmail"
+                           required>
+                    <label for="addNewUserAddress">Address</label>
+                    <input type="text"
+                           name="addNewUserAddress"
+                           id="addNewUserAddress"
+                           required>
+                    <button id="saveNewUserBtn"
+                            type="button"
+                            class="saveNewUserBtn"
+                            onclick="saveNewUser()">Save</button>
+                </div>
+                <div id="divForMessages"
+                     class="alert">
+                    <span id="fieldForMessages"></span>
+                </div>
+                <!-- gomb a form elrejtéséhez -->
+                <button class="hideNewUserBtn" id="hideAddFormBtn"
+                        onclick="hideAddForm()">Hide Form</button>
+                <!-- gomb új júzer létrehozásához, block-ra állítja az inputmezőket -->
+                <button class="newUserBtn" onclick="openAddForm()">New user</button>
+        
+                <div class="removeQuestion">
+                    <p>Biztos kiakarod törölni?</p>
+                    <button id="yes">Igen</button>
+                    <button id="no">Nem</button>
+                </div>        
         <div class="removeQuestion"></div>
         <div class="saveQestion">
-        </div>
-        <h1>Felhasználói adatok</h1>
+            </div>
+            <h1>Felhasználói adatok</h1>
         <div class="users">
             <table border="1px solid">
                 <thead>
@@ -65,7 +61,7 @@
                             Name
                         </th>
                         <th>
-                            Email
+                            Email 
                         </th>
                         <th>
                             Address
@@ -74,13 +70,12 @@
                     </tr>
                 </thead>
                 <tbody class="Users_data">
-
+                    
                 </tbody>
             </table>
         </div>
     </main>
-
-    <script src="/scripts/scripts.js"></script>
+   
+    <script src="scripts/scripts.js"></script>
 </body>
-
 </html>

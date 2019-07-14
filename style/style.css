@@ -50,6 +50,10 @@ tr {
     border: 1px solid #999;
 }
 
+td input:disabled{
+    border: none;
+    color: #000;
+}
 td {
 	border: 1px solid #999;
 	transition: all 300ms;
@@ -62,6 +66,7 @@ td:first-child {
 td:last-child {
 	box-shadow: inset -1px 0 0 #fff;
 }	
+
 tr:last-of-type td {
 	box-shadow: inset 0 -1px 0 #fff; 
 }
@@ -84,18 +89,17 @@ tbody:hover tr:hover td {
 	text-shadow: 0 1px 0 #fff;
 }
 
-.btnSave{
+/*Táblázathoz*/
+.removeQuestion,
+.saveQestion{
+    background: #666666BF;
+    color: #AF1724;
+    font-size: large;
     display: none;
-    color: #FDF8F3;
-    background-color: #AB001C;
-    border:0;
-    border-radius: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: .9;
-    z-index: 1;
-    margin: 0;
-    padding: 4px 37px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1; 
 }
 
 .btnDelete {
@@ -112,7 +116,7 @@ tbody:hover tr:hover td {
     padding: 4px 22px;
 }
 
-.btnEdit {
+.btnEdit, .saveNewUserBtn, .hideNewUserBtn, .newUserBtn {
     background-color: #528CDE;
     color: #FDF8F3;
     border:0;
@@ -122,21 +126,37 @@ tbody:hover tr:hover td {
     cursor: pointer;
     opacity: .9;
     z-index: 1;
-    margin: 0;
+    margin: 1px;
     padding: 4px 22px; 
 }
 
-/*Táblázathoz*/
-.removeQuestion,
-.saveQestion{
-    background: #666666BF;
-    color: #AF1724;
-    font-size: large;
+.newUserBtn{
+    position: absolute;
+    top: 20vh;
+    left: 60vw;
+    }
+
+.btnSave{
     display: none;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1; 
+    color: #FDF8F3;
+    background-color: #AB001C;
+    border:0;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .9;
+    z-index: 1;
+    margin: 0;
+    padding: 4px 37px;
+}
+
+.saveQuestionDisplayBlock,
+.removeQuestionDisplayBlock,
+.btnSaveDisplayBlock{
+    display: block;
+}
+.targetEditBtn{
+    display: none;
 }
 
 /*új júzer felvitelekor vált block-ra*/
@@ -146,8 +166,5 @@ tbody:hover tr:hover td {
 
 /*akkor láthatól, ha nyitva az új júzer form*/
 #hideAddFormBtn {
-    display: none;
-}
-.targetEditBtn{
     display: none;
 }
