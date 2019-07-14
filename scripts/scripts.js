@@ -95,7 +95,7 @@ var BiggestJuzerEver = {
 
     if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(userName)) {
       // a test futtatja rá a stringet a username-re, true-t vagy false-t ad vissza
-      return 'Full name is accepted only. Please, write only letters!';
+      return 'Full name accepted only. Please, write only letters!';
     }
 
     for (var i = 0; i < this.data.length; i += 1) {
