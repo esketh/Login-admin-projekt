@@ -116,7 +116,7 @@ tbody:hover tr:hover td {
     padding: 4px 22px;
 }
 
-.btnEdit, .saveNewUserBtn {
+.btnEdit, .saveNewUserBtn, .hideNewUserBtn, .newUserBtn {
     background-color: #528CDE;
     color: #FDF8F3;
     border:0;
@@ -129,6 +129,12 @@ tbody:hover tr:hover td {
     margin: 0;
     padding: 4px 22px; 
 }
+
+.newUserBtn{
+    position: absolute;
+    top: 20vh;
+    left: 60vw;
+    }
 
 .btnSave{
     display: none;
