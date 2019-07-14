@@ -199,11 +199,12 @@ function hideAddForm() {
   showMessage('');
 }
 
-
+// hibaüzenetek és sikeres mentés
 function showMessage(message) {
   document.getElementById('fieldForMessages').innerHTML = message;
 }
 
+// inputmezők törlése sikeres mentés után
 function clearMessage() {
   document.getElementById('addNewUserName').value = '';
   document.getElementById('addNewUserEmail').value = '';
