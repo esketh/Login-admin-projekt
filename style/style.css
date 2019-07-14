@@ -116,7 +116,7 @@ tbody:hover tr:hover td {
     padding: 4px 22px;
 }
 
-.btnEdit {
+.btnEdit, .saveNewUserBtn {
     background-color: #528CDE;
     color: #FDF8F3;
     border:0;
@@ -155,5 +155,10 @@ tbody:hover tr:hover td {
 
 /*új júzer felvitelekor vált block-ra*/
 #divForNewUser {
+    display: none;
+}
+
+/*akkor láthatól, ha nyitva az új júzer form*/
+#hideAddFormBtn {
     display: none;
 }
