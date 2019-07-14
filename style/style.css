@@ -1,37 +1,162 @@
-html,
-body {
-    background: #DEDDB4;
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+
+html, body {
+    min-height: 100vh;
+    background-color: #E1E8EE;
+    align-items: center;
+	justify-content: center;
     margin: 0;
+    font-family: "Fira Sans", Helvetica, Arial, sans-serif;
 }
 
 h1 {
-    font: 1.6em Verdana, Geneva, sans-serif;
-    font-size: xx-large;
-    margin: 40px;
-    color: rgb(83, 104, 138);
+    margin-top: 15vh;
+    margin-left: 35vw;
+	color: #53688A;
 }
 
-.container {
-    border: 1px solid indigo;
-    background: #38C1CB80;
-    box-sizing: border-box;
-    border-radius: 10%;
-    position: relative;
-    margin: 20vh 90vh;
-    width: 400px;
-    height: 500px;
+table {
+    border: 1px solid #999;
+    border-collapse: collapse;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: center;
 }
 
-p {
-    margin: 40px;
-    font-size: larger;
+th{
+    border: 1px solid #999;
+    background: linear-gradient(#739CC6, #679E88);
+    color: #fff;
+    font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+th:after {
+    display: block;
+	left: 0;
+}
+
+th:first-child {
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+} */
+
+tr {
+    border: 1px solid #999;
+}
+
+td input:disabled{
+    border: none;
+    color: #000;
+}
+td {
+	border: 1px solid #999;
+	transition: all 300ms;
+}
+
+td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}	
+
+td:last-child {
+	box-shadow: inset -1px 0 0 #fff;
+}	
+
+tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff; 
+}
+
+tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}	
+
+tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}	
+
+tbody:hover td {
+	color: transparent;
+	text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
 }
 
 /*Táblázathoz*/
 .removeQuestion,
-.saveQestion,
+.saveQestion{
+    background: #666666BF;
+    color: #AF1724;
+    font-size: large;
+    display: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1; 
+}
+
+.btnDelete {
+    background-color: #AB001C;
+    color: #FDF8F3;
+    border:0;
+    border-radius: 15px;
+    display: block;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .9;
+    z-index: 1;
+    margin: 0;
+    padding: 4px 22px;
+}
+
+.btnEdit, .saveNewUserBtn, .hideNewUserBtn, .newUserBtn {
+    background-color: #528CDE;
+    color: #FDF8F3;
+    border:0;
+    border-radius: 15px;
+    display: block;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .9;
+    z-index: 1;
+    margin: 1px;
+    padding: 4px 22px; 
+}
+
+.newUserBtn{
+    position: absolute;
+    top: 20vh;
+    left: 60vw;
+    }
+
 .btnSave{
-   display: none;
+    display: none;
+    color: #FDF8F3;
+    background-color: #AB001C;
+    border:0;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .9;
+    z-index: 1;
+    margin: 0;
+    padding: 4px 37px;
+}
+
+.saveQuestionDisplayBlock,
+.removeQuestionDisplayBlock,
+.btnSaveDisplayBlock{
+    display: block;
+}
+.targetEditBtn{
+    display: none;
 }
 
 /*új júzer felvitelekor vált block-ra*/
@@ -41,8 +166,5 @@ p {
 
 /*akkor láthatól, ha nyitva az új júzer form*/
 #hideAddFormBtn {
-    display: none;
-}
-.targetEditBtn{
     display: none;
 }

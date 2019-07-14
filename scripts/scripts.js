@@ -84,15 +84,12 @@ var BiggestJuzerEver = {
 
   },
   // a validátorokat a saveNewUser onclick indítja
-  // hibaüzenetet ad, ha a júzernév nem az angol abc betűit tartalmazza minimum 7 karakter hosszan, 
+  // hibaüzenetet ad, ha a júzernév nem az angol abc betűit tartalmazza minimum 7 karakter hosszan,
   // vagy nem használt szóközt(full name!), vagy a júzer már létezik
   validateUserName(userName) {
-
     if (userName === '') {
       return 'Username is required!';
-    }
-
-    else if (userName.length < 7) {
+    } else if (userName.length < 7) {
       return 'Username must contain at least 7 character!';
     }
 
@@ -128,7 +125,6 @@ var BiggestJuzerEver = {
       return 'Address must contain at least 7 character!';
     }
     if (!/[a-zA-Z]/.test(userAddress) || !/[0-9]/.test(userAddress)) {
-
       return 'Address must contain letters and numbers!';
     }
     return '';
@@ -150,7 +146,7 @@ var BiggestJuzerEver = {
 // Az adatok megjelenítéséhez
 
 BiggestJuzerEver.int();
-BiggestJuzerEver.mentesbtn();
+// BiggestJuzerEver.mentesbtn();
 
 //  Esemény kezelések--Törlés
 
@@ -212,7 +208,6 @@ function saveNewUser() {
 
 // új júzer form elrejtése
 function hideAddForm() {
-
   document.getElementById('divForNewUser').style.display = 'none';
   document.getElementById('hideAddFormBtn').style.display = 'none';
   showMessage('');
