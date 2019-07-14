@@ -1,6 +1,6 @@
 var BiggestJuzerEver = {
   data: [],
-  init() {
+  int() {
     this.getData();
   },
   callback(jsonContent) {
@@ -66,14 +66,21 @@ var BiggestJuzerEver = {
 
   },
   // a validátorokat a saveNewUser onclick indítja
+  // hibaüzenetet ad, ha a júzernév nem az angol abc betűit tartalmazza minimum 7 karakter hosszan, 
+  // vagy nem használt szóközt(full name!), vagy a júzer már létezik
   validateUserName(userName) {
+
     if (userName === '') {
       return 'Username is required!';
     }
-    if (!/^[a-zA-Z\ ]+$/.test(userName)) {
-      // hibaüzenetet ad, ha a júzernév nem az angol abc betűit tartalmazza, vagy ha már létezik
+
+    else if (userName.length < 7) {
+      return 'Username must contain at least 7 character!';
+    }
+
+    if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(userName)) {
       // a test futtatja rá a stringet a username-re, true-t vagy false-t ad vissza
-      return 'Please, write letters only!';
+      return 'Full name is accepted only. Please, write only letters!';
     }
 
     for (var i = 0; i < this.data.length; i += 1) {
@@ -94,10 +101,17 @@ var BiggestJuzerEver = {
     }
     return '';
   },
-
+  // címvalidátor betűt és számot is vár minimum 7 karakter hosszan
   validateUserAddress(userAddress) {
     if (userAddress === '') {
       return 'Address is required!';
+    }
+    if (userAddress.length < 7) {
+      return 'Address must contain at least 7 character!';
+    }
+    if (!/[a-zA-Z]/.test(userAddress) || !/[0-9]/.test(userAddress)) {
+
+      return 'Address must contain letters and numbers!';
     }
     return '';
   },
@@ -117,7 +131,7 @@ var BiggestJuzerEver = {
 
 // Az adatok megjelenítéséhez
 
-BiggestJuzerEver.init();
+BiggestJuzerEver.int();
 BiggestJuzerEver.mentesbtn();
 
 //  Esemény kezelések--Törlés
@@ -152,6 +166,7 @@ function openAddForm() {
   // inputmezők törlése - a 'user already exist' hibaüzenetet ez tünteti el
   clearMessage();
   document.getElementById('divForNewUser').style.display = 'block';
+  document.getElementById('hideAddFormBtn').style.display = 'block';
 }
 
 function saveNewUser() {
@@ -159,7 +174,7 @@ function saveNewUser() {
   var userEmail = document.getElementById('addNewUserEmail').value;
   var userAddress = document.getElementById('addNewUserAddress').value;
 
-  // a validátorok hibaüzenetei ide futnak be:
+  // a validátorok hibaüzenetei ide futnak be
   var errorMessage = BiggestJuzerEver.validateUserName(userName) || BiggestJuzerEver.validateUserEmail(userEmail) || BiggestJuzerEver.validateUserAddress(userAddress);
   // ha nincs hibaüzenet, a júzeradatok bekerülnek egy objektumba és elmentődnek
   if (errorMessage === '') {
@@ -173,11 +188,21 @@ function saveNewUser() {
     // az objektumot pusholja a nagy tömbbe
     BiggestJuzerEver.addData(newUserToSaveObj);
     showMessage('User succesfully added.');
+
     BiggestJuzerEver.showAllDataWithTempleString();
   } else {
     showMessage(errorMessage);
   }
 }
+
+
+function hideAddForm() {
+
+  document.getElementById('divForNewUser').style.display = 'none';
+  document.getElementById('hideAddFormBtn').style.display = 'none';
+  showMessage('');
+}
+
 
 function showMessage(message) {
   document.getElementById('fieldForMessages').innerHTML = message;

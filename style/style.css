@@ -26,17 +26,25 @@ p {
     margin: 40px;
     font-size: larger;
 }
+
 /*Táblázathoz*/
-.removeQuestion{
-   display: none;
+.removeQuestion {
+    display: none;
 }
+
 /*új júzer felvitelekor vált block-ra*/
 #divForNewUser {
     display: none;
 }
-.saveQestion{
-    display: none;   
+
+#hideAddFormBtn {
+    display: none;
 }
-.btnSave{
+
+.saveQestion {
+    display: none;
+}
+
+.btnSave {
     display: none;
 }
