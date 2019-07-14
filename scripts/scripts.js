@@ -14,11 +14,11 @@ var BiggestJuzerEver = {
         this.callback(request.responseText);
       }
     };
-    request.open('GET', '/Data/users.json');
+    request.open('GET', 'Data/users.json');
     request.send();
   },
-  // hozzáadja az új júzert a táblázat végére
   addData(item) {
+    // hozzáadja az új júzert a táblázat végére
     this.data.push(item);
   },
 
@@ -55,26 +55,19 @@ var BiggestJuzerEver = {
   },
   edit(id) {
     var nodeInputUser = document.querySelector(`[id="${id}"]`);
-    console.log(nodeInputUser);
-    // itt kapjan meg az értéket, ha irtak bele
 
-    nodeInputUser.setAttribute('value', targetValue || 'semmi');
+    // itt kapja meg az értéket, ha irtak bele
+    nodeInputUser.setAttribute('value', targetValue);
 
+    var nodeTR = nodeInputUser.parentNode.parentNode;
+    var nodeInputs = nodeTR.querySelectorAll('input');
 
-    var nodeTD = nodeInputUser.parentNode.parentNode;
-    var nodeInputs = nodeTD.querySelectorAll('input');
-    console.log(nodeTD);
     for (var i = 0; i < nodeInputs.length; i++) {
       nodeInputs[i].setAttribute('disabled', 'disabled');
     }
     document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
-    var btnSave = document.querySelectorAll('.btnSave');
-    console.log(btnSave);
-    var btnEdit = document.querySelectorAll('.btnEdit');
-    for (var i = 0; i < btnSave; i++) {
-      btnSave[i].classList.remove('btnSaveDisplayBlock');
-      btnSave[i].classList.remove('btnSave');
-    }
+    nodeTR.querySelector('.btnSave').style.display = 'none';
+    nodeTR.querySelector('.btnEdit').style.display = 'block';
   },
 
   create() {
@@ -279,15 +272,5 @@ var targetValue;
 function getInputValue() {
   userInputId = parseInt(event.target.id, 10);
   targetValue = event.target.value;
-  console.log(userInputId);
   return targetValue;
 }
-/*
-function saveIfYes() {
-  var nodeTr = event.target.parentNode.parentNode;
-  nodeTr.querySelector('.editableName>input').setAttribute('disabled');
-  nodeTr.querySelector('.editableEmail>input').setAttribute('disabled');
-  nodeTr.querySelector('.editableAddress>input').setAttribute('disabled');
-
-  document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
-}*/

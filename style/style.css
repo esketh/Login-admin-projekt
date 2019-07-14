@@ -126,7 +126,7 @@ tbody:hover tr:hover td {
     cursor: pointer;
     opacity: .9;
     z-index: 1;
-    margin: 1px;
+    margin: 0;
     padding: 4px 22px; 
 }
 
