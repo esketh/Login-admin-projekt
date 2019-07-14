@@ -26,7 +26,9 @@ p {
     font-size: larger;
 }
 /*Táblázathoz*/
-.removeQuestion{
+.removeQuestion,
+.saveQestion,
+.btnSave{
    display: none;
 }
 /*új júzer felvitelekor vált block-ra*/
@@ -36,6 +38,6 @@ p {
 .saveQestion{
     display: none;   
 }
-.btnSave{
+.targetEditBtn{
     display: none;
 }
