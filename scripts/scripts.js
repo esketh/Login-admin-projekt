@@ -47,7 +47,7 @@ var BiggestJuzerEver = {
   mentesbtn() {
     document.querySelector('.saveQestion').classList.add('saveQuestionDisplayBlock');
     var nodeMentesQuestion = `<div>
-    <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
+    <p>Biztosan menteni akarod ${userSaveId - 1} sort ?</p>
     <button id="yesSave"  onclick="saveIfYes()">Igen</button>
     <button id="noSave" onclick="saveIfNo()">Nem</button>
     </div>`;
@@ -239,8 +239,8 @@ function editHandler() {
 
   // input mezők disabled tul. levétele
   var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
-  nodeEdittableTdName .removeAttribute('disabled');
-  nodeEdittableTdName .setAttribute('spellcheck', false);
+  nodeEdittableTdName.removeAttribute('disabled');
+  nodeEdittableTdName.setAttribute('spellcheck', false);
   nodeEdittableTdName.addEventListener('change', getInputValue);
 
   var nodeEdittableTdEmail = nodeTr.querySelector('.editableEmail>input');
@@ -268,7 +268,7 @@ function saveIfNo() {
   BiggestJuzerEver.showAllDataWithTempleString();
   document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
 }
-function  saveIfYes() {
+function saveIfYes() {
   BiggestJuzerEver.edit(userInputId);
 }
 
