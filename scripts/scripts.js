@@ -22,9 +22,9 @@ var BiggestJuzerEver = {
     this.data.forEach(element => {
       userTemplate += `<tr id="${element.id}">
               <td>${element.id}</td>
-              <td class="editableName"><input value="${element.name}" disabled></td>
-              <td class="editableEmail"><input value="${element.emailAddress}" disabled></td>
-              <td class="editableAddress"><input value="${element.address}"  disabled></td>
+              <td class="editableName"><input id=${element.id + BiggestJuzerEver.data.length} value="${element.name}" disabled></td>
+              <td class="editableEmail"><input id=${element.id + BiggestJuzerEver.data.length} value="${element.emailAddress}" disabled></td>
+              <td class="editableAddress"><input id=${element.id + BiggestJuzerEver.data.length}  value="${element.address}"  disabled></td>
               <td><button class="btnEdit" onclick="editHandler();" name="${element.id + 1}" >${'Szerkesztés'}</button>
               <button class="btnSave"">Mentés</button>
               <td><button class="btnDelete" onclick="removeHandler()" name="${element.id}">Törlés</button></td>
@@ -43,14 +43,33 @@ var BiggestJuzerEver = {
     document.querySelector('.saveQestion').classList.add('saveQuestionDisplayBlock');
     var nodeMentesQuestion = `<div>
     <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
-    <button id="yesSave"  >Igen</button>
-    <button id="noSave">Nem</button>
+    <button id="yesSave"  onclick="saveIfYes()">Igen</button>
+    <button id="noSave" onclick="saveIfNo()">Nem</button>
     </div>`;
     document.querySelector('.saveQestion').innerHTML = nodeMentesQuestion;
-    this.edit();
   },
-  edit() {
+  edit(id) {
+    var nodeInputUser = document.querySelector(`[id="${id}"]`);
+    console.log(nodeInputUser);
+    // itt kapjan meg az értéket, ha irtak bele
 
+    nodeInputUser.setAttribute('value', targetValue || 'semmi');
+
+
+    var nodeTD = nodeInputUser.parentNode.parentNode;
+    var nodeInputs = nodeTD.querySelectorAll('input');
+    console.log(nodeTD);
+    for (var i = 0; i < nodeInputs.length; i++) {
+      nodeInputs[i].setAttribute('disabled', 'disabled');
+    }
+    document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
+    var btnSave = document.querySelectorAll('.btnSave');
+    console.log(btnSave);
+    var btnEdit = document.querySelectorAll('.btnEdit');
+    for (var i = 0; i < btnSave; i++) {
+      btnSave[i].classList.remove('btnSaveDisplayBlock');
+      btnSave[i].classList.remove('btnSave');
+    }
   },
 
   create() {
@@ -99,6 +118,7 @@ function editHandler() {
   event.target.classList.add('targetEditBtn');
 
   var nodeTr = event.target.parentNode.parentNode;
+
   // a mentés gomb megjelenítéséhez
   nodeTr.querySelector('.btnSave').classList.add('btnSaveDisplayBlock');
 
@@ -106,18 +126,22 @@ function editHandler() {
   var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
   nodeEdittableTdName .removeAttribute('disabled');
   nodeEdittableTdName .setAttribute('spellcheck', false);
+  nodeEdittableTdName.addEventListener('change', getInputValue);
 
   var nodeEdittableTdEmail = nodeTr.querySelector('.editableEmail>input');
   nodeEdittableTdEmail.removeAttribute('disabled');
   nodeEdittableTdEmail.setAttribute('spellcheck', false);
+  nodeEdittableTdEmail.addEventListener('change', getInputValue);
 
   var nodeEdittableTdAddress = nodeTr.querySelector('.editableAddress>input');
   nodeEdittableTdAddress.removeAttribute('disabled');
   nodeEdittableTdAddress.setAttribute('spellcheck', false);
+  nodeEdittableTdAddress.addEventListener('change', getInputValue);
 
   // mentés gomb függvény hívása
   var nodeSaveBtn = nodeTr.querySelector('.btnSave');
   nodeSaveBtn.addEventListener('click', saveHandler);
+
 
   function saveHandler(userSaveId) {
     BiggestJuzerEver.mentesbtn();
@@ -125,3 +149,20 @@ function editHandler() {
 }
 
 // mentés gomb kérdés kezelése
+function saveIfNo() {
+  BiggestJuzerEver.showAllDataWithTempleString();
+}
+function  saveIfYes() {
+  BiggestJuzerEver.edit(userInputId);
+}
+
+var userInputId;
+var targetValue;
+
+// azt az eseményt figyeli h lett e változás az input mezőben
+function getInputValue() {
+  userInputId = parseInt(event.target.id, 10);
+  targetValue = event.target.value;
+  console.log(userInputId);
+  return targetValue;
+}
