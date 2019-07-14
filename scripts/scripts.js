@@ -14,7 +14,7 @@ var BiggestJuzerEver = {
         this.callback(request.responseText);
       }
     };
-    request.open('GET', '/Data/users.json');
+    request.open('GET', 'Data/users.json');
     request.send();
   },
   showAllDataWithTempleString() {
@@ -167,12 +167,3 @@ function getInputValue() {
   console.log(userInputId);
   return targetValue;
 }
-/*
-function saveIfYes() {
-  var nodeTr = event.target.parentNode.parentNode;
-  nodeTr.querySelector('.editableName>input').setAttribute('disabled');
-  nodeTr.querySelector('.editableEmail>input').setAttribute('disabled');
-  nodeTr.querySelector('.editableAddress>input').setAttribute('disabled');
-
-  document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
-}*/
