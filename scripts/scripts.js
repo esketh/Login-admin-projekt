@@ -43,8 +43,8 @@ var BiggestJuzerEver = {
     document.querySelector('.saveQestion').classList.add('saveQuestionDisplayBlock');
     var nodeMentesQuestion = `<div>
     <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
-    <button id="yesSave"  >Igen</button>
-    <button id="noSave">Nem</button>
+    <button id="yesSave" onclick="saveIfYes()">Igen</button>
+    <button id="noSave" onclick="saveIfNo()">Nem</button>
     </div>`;
     document.querySelector('.saveQestion').innerHTML = nodeMentesQuestion;
     this.edit();
@@ -125,3 +125,16 @@ function editHandler() {
 }
 
 // mentés gomb kérdés kezelése
+function saveIfNo() {
+  BiggestJuzerEver.showAllDataWithTempleString();
+  document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
+}
+
+function saveIfYes() {
+  var nodeTr = event.target.parentNode.parentNode;
+  nodeTr.querySelector('.editableName>input').setAttribute('disabled');
+  nodeTr.querySelector('.editableEmail>input').setAttribute('disabled');
+  nodeTr.querySelector('.editableAddress>input').setAttribute('disabled');
+
+  document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
+}
