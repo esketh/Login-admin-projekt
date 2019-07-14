@@ -17,8 +17,8 @@ var BiggestJuzerEver = {
     request.open('GET', '/Data/users.json');
     request.send();
   },
+  // hozzáadja az új júzert a táblázat végére
   addData(item) {
-    // hozzáadja az új júzert a táblázat végére
     this.data.push(item);
   },
 
@@ -47,7 +47,7 @@ var BiggestJuzerEver = {
   mentesbtn() {
     document.querySelector('.saveQestion').classList.add('saveQuestionDisplayBlock');
     var nodeMentesQuestion = `<div>
-    <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
+    <p>Biztosan menteni akarod ${userSaveId - 1} sort ?</p>
     <button id="yesSave"  onclick="saveIfYes()">Igen</button>
     <button id="noSave" onclick="saveIfNo()">Nem</button>
     </div>`;
@@ -133,8 +133,8 @@ var BiggestJuzerEver = {
     }
     return '';
   },
+  // az utolsó ID után következő ID-t adja vissza az új júzernek
   getNextId() {
-    // az utolsó ID után következő ID-t adja vissza az új júzernek
     var maxID = this.data[0].id;
     for (var i = 0; i < this.data.length; i += 1) {
       if (this.data[i].id > maxID) {
@@ -183,7 +183,7 @@ function openAddForm() {
   document.getElementById('divForNewUser').style.display = 'block';
   document.getElementById('hideAddFormBtn').style.display = 'block';
 }
-
+// júzer mentése
 function saveNewUser() {
   var userName = document.getElementById('addNewUserName').value;
   var userEmail = document.getElementById('addNewUserEmail').value;
@@ -210,7 +210,7 @@ function saveNewUser() {
   }
 }
 
-
+// új júzer form elrejtése
 function hideAddForm() {
 
   document.getElementById('divForNewUser').style.display = 'none';
@@ -244,8 +244,8 @@ function editHandler() {
 
   // input mezők disabled tul. levétele
   var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
-  nodeEdittableTdName .removeAttribute('disabled');
-  nodeEdittableTdName .setAttribute('spellcheck', false);
+  nodeEdittableTdName.removeAttribute('disabled');
+  nodeEdittableTdName.setAttribute('spellcheck', false);
   nodeEdittableTdName.addEventListener('change', getInputValue);
 
   var nodeEdittableTdEmail = nodeTr.querySelector('.editableEmail>input');
@@ -273,7 +273,7 @@ function saveIfNo() {
   BiggestJuzerEver.showAllDataWithTempleString();
   document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
 }
-function  saveIfYes() {
+function saveIfYes() {
   BiggestJuzerEver.edit(userInputId);
 }
 
