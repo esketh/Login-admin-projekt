@@ -82,13 +82,13 @@ h1{
     
 #inputLogIns:hover {
         transition: all .3s ease;
-        background-color: rgba(0,0,0,0.8);
+        background-color: #000000CC;
     
 }
 
 .divhibak {
     background: #666666BF;
-    color: #F7F7F7;
+    color: #AF1724;
     display: none;
     position: fixed;
     width: 100%;
