@@ -37,6 +37,7 @@ p {
     display: none;
 }
 
+/*akkor láthatól, ha nyitva az új júzer form*/
 #hideAddFormBtn {
     display: none;
 }
