@@ -151,6 +151,7 @@ function editHandler() {
 // mentés gomb kérdés kezelése
 function saveIfNo() {
   BiggestJuzerEver.showAllDataWithTempleString();
+  document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
 }
 function  saveIfYes() {
   BiggestJuzerEver.edit(userInputId);
@@ -166,3 +167,12 @@ function getInputValue() {
   console.log(userInputId);
   return targetValue;
 }
+/*
+function saveIfYes() {
+  var nodeTr = event.target.parentNode.parentNode;
+  nodeTr.querySelector('.editableName>input').setAttribute('disabled');
+  nodeTr.querySelector('.editableEmail>input').setAttribute('disabled');
+  nodeTr.querySelector('.editableAddress>input').setAttribute('disabled');
+
+  document.querySelector('.saveQestion').classList.remove('saveQuestionDisplayBlock');
+}*/
