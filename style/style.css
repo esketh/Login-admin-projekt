@@ -90,8 +90,7 @@ tbody:hover tr:hover td {
 }
 
 /*Táblázathoz*/
-.removeQuestion,
-.saveQestion{
+.removeQuestion, .saveQestion{
     background: #666666BF;
     color: #AF1724;
     font-size: large;
@@ -100,6 +99,17 @@ tbody:hover tr:hover td {
     width: 100%;
     top: 0;
     z-index: 1; 
+}
+
+.alert{
+    background: #666666BF;
+    color: #AF1724;
+    font-size: large;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    top: 0;
+    z-index: 1;
 }
 
 .btnDelete {
