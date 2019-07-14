@@ -17,6 +17,11 @@ var BiggestJuzerEver = {
     request.open('GET', 'Data/users.json');
     request.send();
   },
+  addData(item) {
+    // hozzáadja az új júzert a táblázat végére
+    this.data.push(item);
+  },
+
   showAllDataWithTempleString() {
     var  userTemplate = '';
     this.data.forEach(element => {
