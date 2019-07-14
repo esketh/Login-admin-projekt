@@ -26,12 +26,17 @@ p {
     font-size: larger;
 }
 /*Táblázathoz*/
-.removeQuestion{
+.removeQuestion,
+.saveQestion,
+.btnSave{
    display: none;
 }
-.saveQestion{
-    display: none;   
+
+.saveQuestionDisplayBlock,
+.removeQuestionDisplayBlock,
+.btnSaveDisplayBlock{
+    display: block;
 }
-.btnSave{
+.targetEditBtn{
     display: none;
 }

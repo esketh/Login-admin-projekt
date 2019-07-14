@@ -40,8 +40,7 @@ var BiggestJuzerEver = {
     nodeTbody.removeChild(nodeTrUser);
   },
   mentesbtn() {
-    var nodesaveHandler = document.querySelector('.saveQestion');
-    nodesaveHandler.style.display = 'block';
+    document.querySelector('.saveQestion').classList.add('saveQuestionDisplayBlock');
     var nodeMentesQuestion = `<div>
     <p>Biztosan menteni akarod ${userSaveId - 1 } sort ?</p>
     <button id="yesSave"  >Igen</button>
@@ -51,7 +50,7 @@ var BiggestJuzerEver = {
     this.edit();
   },
   edit() {
-    console.log('edit');
+
   },
 
   create() {
@@ -73,8 +72,7 @@ var userID;
 
 function removeHandler() {
   userID = parseInt(event.target.name, 10);
-  var noderemoveQuestion = document.querySelector('.removeQuestion');
-  noderemoveQuestion.style.display = 'block';
+  document.querySelector('.removeQuestion').classList.add('removeQuestionDisplayBlock');
   var questionRemove = `<div>
     <p>Biztos ki akarod törölni ${userID} sort?</p>
     <button id="yes" onclick="checkIfYes()" >Igen</button>
@@ -85,13 +83,11 @@ function removeHandler() {
 
 function checkIfYes() {
   BiggestJuzerEver.remove(userID);
-  var noderemoveQuestion = document.querySelector('.removeQuestion');
-  noderemoveQuestion.style.display = 'none';
+  document.querySelector('.removeQuestion').classList.remove('removeQuestionDisplayBlock');
 }
 
 function checkIfNo() {
-  var noderemoveQuestion = document.querySelector('.removeQuestion');
-  noderemoveQuestion.style.display = 'none';
+  document.querySelector('.removeQuestion').classList.remove('removeQuestionDisplayBlock');
 }
 
 // szerkesztés-másolás
@@ -100,14 +96,11 @@ var userSaveId;
 function editHandler() {
   userSaveId = parseInt(event.target.name, 10);
   // event.target szerkesztés gomb
-  var editBtn = event.target;
-  editBtn.style.display = 'none';
+  event.target.classList.add('targetEditBtn');
 
   var nodeTr = event.target.parentNode.parentNode;
-
   // a mentés gomb megjelenítéséhez
-  var nodebtnSave = nodeTr.querySelector('.btnSave');
-  nodebtnSave.style.display = 'block';
+  nodeTr.querySelector('.btnSave').classList.add('btnSaveDisplayBlock');
 
   // input mezők disabled tul. levétele
   var nodeEdittableTdName = nodeTr.querySelector('.editableName>input');
