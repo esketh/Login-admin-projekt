@@ -49,14 +49,13 @@ var BiggestJuzerEver = {
     nodesaveHandler.style.display = 'block';
     var nodeMentesQuestion = `<div>
     <p>Biztosan menteni akarod a módosításokat?</p>
-    <button id="yesSave"  >Igen</button>
-    <button id="noSave">Nem</button>
+    <button id="yesSave"  onclick="saveIfYes()">Igen</button>
+    <button id="noSave" onclick="checkIfNo()">Nem</button>
     </div>`;
     document.querySelector('.saveQestion').innerHTML = nodeMentesQuestion;
-    this.edit();
   },
   edit() {
-    console.log('edit');
+
   },
 
   create() {
@@ -118,7 +117,7 @@ var BiggestJuzerEver = {
 // Az adatok megjelenítéséhez
 
 BiggestJuzerEver.init();
-BiggestJuzerEver.mentesbtn();
+// BiggestJuzerEver.mentesbtn();
 
 //  Esemény kezelések--Törlés
 
@@ -223,6 +222,22 @@ function editHandler() {
   function saveHandler(userSaveId) {
     BiggestJuzerEver.mentesbtn();
   }
-}
 
-// mentés gomb kérdés kezelése
+  // mentés gomb kérdés kezelése
+  function saveIfYes() {
+    if (BiggestJuzerEver.userName != nodeEdittableTdName) {
+      BiggestJuzerEver.validateUserName(nodeEdittableTdName);
+    } else if (BiggestJuzerEver.userEmail != nodeEdittableTdEmail ) {
+      BiggestJuzerEver.validateUserEmail(nodeEdittableTdEmail);
+    } else if (BiggestJuzerEver.userAddress != nodeEdittableTdAddress) {
+      BiggestJuzerEver.validateUserAddress(nodeEdittableTdAddress);
+    }
+    var errorMessage = BiggestJuzerEver.validateUserName(nodeEdittableTdName) || BiggestJuzerEver.validateUserEmail(nodeEdittableTdEmail) || BiggestJuzerEver.validateUserAddress(nodeEdittableTdAddress);
+
+    if (errorMessage === '') {
+      nodeEdittableTdName = BiggestJuzerEver.userName;
+      nodeEdittableTdEmail = BiggestJuzerEver.userEmail;
+      nodeEdittableTdAddress = BiggestJuzerEver.userAddress;
+    }
+  }
+}
