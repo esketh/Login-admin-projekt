@@ -27,9 +27,9 @@ var BiggestJuzerEver = {
     this.data.forEach(element => {
       userTemplate += `<tr id="${element.id}">
               <td>${element.id}</td>
-              <td class="editableName"><input id=${element.id + BiggestJuzerEver.data.length} value="${element.name}" disabled></td>
-              <td class="editableEmail"><input id=${element.id + BiggestJuzerEver.data.length} value="${element.emailAddress}" disabled></td>
-              <td class="editableAddress"><input id=${element.id + BiggestJuzerEver.data.length}  value="${element.address}"  disabled></td>
+              <td class="editableName"><input id=${element.id  * BiggestJuzerEver.data.length + 1} value="${element.name}" disabled></td>
+              <td class="editableEmail"><input id=${element.id   * BiggestJuzerEver.data.length + 2} value="${element.emailAddress}" disabled></td>
+              <td class="editableAddress"><input id=${element.id  * BiggestJuzerEver.data.length + 3}  value="${element.address}"  disabled></td>
               <td><button class="btnEdit" onclick="editHandler();" name="${element.id + 1}" >${'Szerkesztés'}</button>
               <button class="btnSave"">Mentés</button>
               <td><button class="btnDelete" onclick="removeHandler()" name="${element.id}">Törlés</button></td>
@@ -55,7 +55,7 @@ var BiggestJuzerEver = {
   },
   edit(id) {
     var nodeInputUser = document.querySelector(`[id="${id}"]`);
-
+    console.log(nodeInputUser);
     // itt kapja meg az értéket, ha irtak bele
     nodeInputUser.setAttribute('value', targetValue);
 
